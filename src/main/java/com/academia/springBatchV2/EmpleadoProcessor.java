@@ -1,13 +1,13 @@
 package com.academia.springBatchV2;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.batch.item.ItemProcessor;
 
-@SpringBootApplication
-public class SpringBatchV2Application {
+public class EmpleadoProcessor implements ItemProcessor<Empleado, Empleado> {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBatchV2Application.class, args);
+	@Override
+	public Empleado process(Empleado empleado) {
+		empleado.setNombre(empleado.getNombre().toUpperCase());
+		empleado.setBono(empleado.getSalario() * 0.10);
+		return empleado;
 	}
-
 }
