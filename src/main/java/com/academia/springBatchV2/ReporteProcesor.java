@@ -1,13 +1,17 @@
 package com.academia.springBatchV2;
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.batch.item.ItemProcessor;
 
-@SpringBootApplication
-public class SpringBatchV2Application {
+public class ReporteProcessor implements ItemProcessor<Empleado, EmpleadoReporte> {
 
-	public static void main(String[] args) {
-		SpringApplication.run(SpringBatchV2Application.class, args);
+	@Override
+	public EmpleadoReporte process(Empleado empleado) {
+		EmpleadoReporte reporte = new EmpleadoReporte();
+		reporte.setNombre(empleado.getNombre());
+		reporte.setDepartamento(empleado.getDepartamento());
+		reporte.setSalario(empleado.getSalario());
+		reporte.setBono(empleado.getBono());
+		reporte.setSalarioTotal(empleado.getSalario() + empleado.getBono());
+		return reporte;
 	}
-
 }
