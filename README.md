@@ -114,24 +114,53 @@ Juan Perez,Ventas,25000
 Maria Lopez,TI,35000
 ...
 ```
+---
+
+# ⚙️ Dependencias (build.gradle)
+
+```gradle
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.academia'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '17'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+    runtimeOnly 'com.mysql:mysql-connector-j'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+```
 
 ---
 
-# ▶️ Ejecución
+# ▶️ Ejecución del Proyecto
 
-## Desde IDE
-
-Ejecutar:
-
-```
-SpringBatchV2Application.java
-```
-
-## Desde consola
+## Compilar
 
 ```bash
-mvn clean install
-mvn spring-boot:run
+./gradlew build
+```
+
+## Ejecutar
+
+```bash
+./gradlew bootRun
+```
+
+En Windows:
+
+```bash
+gradlew.bat build
+gradlew.bat bootRun
 ```
 
 ---
@@ -140,15 +169,16 @@ mvn spring-boot:run
 
 ## STEP 1
 
-* Lee CSV
+CSV → Processor → MySQL
+
 * Convierte nombre a mayúsculas
-* Calcula bono (10%)
-* Inserta en MySQL
+* Calcula bono 10%
 
 ## STEP 2
 
-* Lee desde MySQL
-* Calcula salarioTotal = salario + bono
+MySQL → Processor → CSV
+
+* Calcula salarioTotal
 * Genera `reporte-empleados.csv`
 
 ---
