@@ -42,7 +42,7 @@ MySQL → Processor → reporte-empleados.csv
 # 📂 Estructura del Proyecto
 
 ```
-src/main/java/com/academia/batch
+src/main/java/com/academia/springBatchV2
 │
 ├── BatchConfig.java
 ├── Empleado.java
